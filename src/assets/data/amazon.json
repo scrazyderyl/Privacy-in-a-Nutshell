@@ -12,7 +12,7 @@
         {"description": "Interest-Based Ads", "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=202075050"},
         {"description": "Cookies", "url": "https://www.amazon.com/gp/help/customer/display.html/?nodeId=201890250"},
         {"description": "Children's Privacy Disclosure", "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=202185560"},
-        {"description": "EU-US and Swiss-US Privacy Shield", "url": "https://www.amazon.com/gp/help/customer/display.html/ref=hp_left_v4_sib?ie=UTF8&nodeId=202135380"}
+        {"description": "EU-US and Swiss-US Privacy Shield", "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=202135380"}
     ],
     "data_collected": [
         {"category": "Biographical", "datapoints": ["Address", "Age", "Drivers License Number", "Email Address", "Name", "Personal Description", "Phone Number", "Social Security Number"]},
