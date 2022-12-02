@@ -1,0 +1,65 @@
+{
+    "name": "Google",
+    "updated": "2022-11-30",
+    "breaches": [
+        {"description": "2018 Google+ Leak", "url": "https://www.forbes.com/sites/kateoflahertyuk/2018/10/09/google-plus-breach-what-happened-who-was-impacted-and-how-to-delete-your-account/"}
+    ],
+    "links": [
+        {"description": "Website", "url": "https://www.google.com/"},
+        {"description": "Account Preferences", "url": "https://myaccount.google.com/"},
+        {"description": "Privacy Checkup", "url": "https://myaccount.google.com/privacycheckup"}
+    ],
+    "documents": [
+        {"description": "Privacy Policy", "url": "https://policies.google.com/privacy"},
+        {"description": "Data Retention", "url": "https://policies.google.com/technologies/retention"},
+        {"description": "Frameworks", "url": "https://policies.google.com/privacy/frameworks"},
+        {"description": "Partners", "url": "https://policies.google.com/privacy/google-partners"}
+    ],
+    "data_collected": [
+        {"category": "Biographical", "datapoints": ["Age", "Email Address", "Gender", "Language", "Name", "Phone Number"]},
+        {"category": "Behavioral", "datapoints": ["Call Information", "Browsing History", "Email Data", "Social Interactions", "Location", "Search Terms", "User-Generated Content", "Video Watch History"]},
+        {"category": "Consumer", "datapoints": ["Content Interaction", "Purchase Activity", "Ad Interactions"]},
+        {"category": "Financial", "datapoints": ["Payment Information"]},
+        {"category": "Biometric", "datapoints": ["Fingerprints", "Photo", "Voice and Audio Information"]},
+        {"category": "Device", "datapoints": ["Application Version Number", "Browser Settings", "Browser Type", "Mobile Carrier Name", "Crash Reports", "Date, Time, and Referrer URL of Requests", "Device Settings", "Device Type", "IP Address", "Operating System", "System Activity", "Unique Identifier"]}
+    ],
+    "usage": [
+        "Serve advertisements",
+        "Provide video recommendations",
+        "Provide relevant search results",
+        "Store browsing preferences",
+        "Provide map directions",
+        "Suggest recipients from contacts",
+        "Generate analytics",
+        "Notify users of suspicious account activity",
+        "Improve safety and reliability of services",
+        "Protect against security threats, abuse, and illegal activity",
+        "Maintain services",
+        "Conduct research and development",
+        "Comply with legal obligations"
+    ],
+    "third_party": {
+        "parties": [
+            "Trusted partners",
+            "Affiliates and trusted entities",
+            "Services authorized by user",
+            "User's domain administrator"
+        ],
+        "other_sources": [
+            "Publicly accessible sources"
+        ]
+    },
+    "protections": [
+        "Transmitted data is encrypted",
+        "Internal access is restricted"
+    ],
+    "rights": [
+        "Access personal data",
+        "Delete personal data"
+    ],
+    "laws": [
+        "CCPA",
+        "EU-US Privacy Shield",
+        "Swiss-US Privacy Shield"
+    ]
+}

@@ -1,0 +1,8 @@
+<div>
+    <p class="title">Datapoint Search</p>
+    <p class="close" (click)="closeDialog()">X</p>
+</div>
+<input type="text" placeholder="Search" [(ngModel)]="query" (input)="search()">
+<div class="results">
+    <p *ngFor="let datapoint of results" class="datapoint">{{ datapoint }}</p>
+</div>

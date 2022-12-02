@@ -1,0 +1,63 @@
+{
+    "name": "Amazon",
+    "updated": "2022-11-30",
+    "breaches": [
+        {"description": "2018 Name and Email Leak", "url": "https://www.theguardian.com/technology/2018/nov/21/amazon-hit-with-major-data-breach-days-before-black-friday"}
+    ],
+    "links": [
+        {"description": "Website", "url": "https://amazon.com"}
+    ],
+    "documents": [
+        {"description": "Privacy Policy", "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=468496"},
+        {"description": "Interest-Based Ads", "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=202075050"},
+        {"description": "Cookies", "url": "https://www.amazon.com/gp/help/customer/display.html/?nodeId=201890250"},
+        {"description": "Children's Privacy Disclosure", "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=202185560"},
+        {"description": "EU-US and Swiss-US Privacy Shield", "url": "https://www.amazon.com/gp/help/customer/display.html/ref=hp_left_v4_sib?ie=UTF8&nodeId=202135380"}
+    ],
+    "data_collected": [
+        {"category": "Biographical", "datapoints": ["Address", "Age", "Drivers License Number", "Email Address", "Name", "Personal Description", "Phone Number", "Social Security Number"]},
+        {"category": "Behavioral", "datapoints": ["Application Usage", "Location", "User-Generated Content", "Page Interaction", "Page Visit Length"]},
+        {"category": "Consumer", "datapoints": ["Content Interaction", "Content Use History", "Products and Content Viewed and Searched", "Purchase History"]},
+        {"category": "Financial", "datapoints": ["Corporate Information", "Credit History", "Payment Information"]},
+        {"category": "Biometric", "datapoints": ["Voice Information", "Image and Video Information", "Photo"]},
+        {"category": "Device", "datapoints": ["Connectivity", "Date, Time, and URL of Requests", "Device Configuration", "Device Logs", "Errors and Event Failures", "IP Address", "ISP Information", "Network Details", "Time Zone", "Unique Identifier", "Version"]}
+    ],
+    "usage": [
+        "Facilitate purchase and delivery of products and services",
+        "Maintain services",
+        "Provide recommendations",
+        "Personalize user experience",
+        "Provide voice, image, and camera services",
+        "Comply with legal obligations",
+        "Serve advertisements",
+        "Prevent fraud and abuse",
+        "Assess credit risks",
+        "Protect the rights, property, or safety of Amazon, its users, or others"
+    ],
+    "third_party": {
+        "parties": [
+            "Third-party storefronts",
+            "Co-branded businesses",
+            "Fulfillment",
+            "Mail carriers",
+            "Payment processors",
+            "Data processors and analyzers",
+            "Marketers",
+            "Search engines",
+            "Content transmitters",
+            "Credit bureaus",
+            "Customer service contractors",
+            "Advertisers"
+        ]
+    },
+    "protections": [
+        "Third-parties can use personal information only for the intended purpose",
+        "Transmitted data is encrypted"
+    ],
+    "laws": [
+        "COPPA",
+        "CCPA",
+        "EU-US Privacy Shield",
+        "Swiss-US Privacy Shield"
+    ]
+}

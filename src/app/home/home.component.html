@@ -1,0 +1,30 @@
+<div class="page">
+    <p class="title">Services Index</p>
+    <div class="controls">
+        <input type="text" [(ngModel)]="query" (input)="search()" placeholder="Search">
+        <select [(ngModel)]="sector" (change)="search()">
+            <option *ngFor="let name of sectors">{{ name }}</option>
+        </select>
+    </div>
+    <div class="cards">
+        <div class="card" *ngFor="let site of results">
+            <div class="header">
+                <div class="horizontal-flex">
+                    <img class="logo" height="64" src="../../assets/logos/{{ site.id }}.png">
+                    <div class="descriptor vertical-flex">
+                        <p class="name">{{ site.name }}</p>
+                        <p class="sector">{{ site.sector }}</p>
+                    </div>
+                </div>
+                <a class="shield" *ngIf="site.tosdr_id" href="https://tosdr.org/en/service/{{ site.tosdr_id }}">
+                    <img src="https://shields.tosdr.org/en_{{ site.tosdr_id }}.svg">
+                </a>
+            </div>
+            <div class="categories">
+                <p *ngIf="!site.categories" class="category">Summary not available</p>
+                <p class="category" *ngFor="let category of site.categories">{{ category }}</p>
+            </div>
+            <a *ngIf="site.categories" class="view" routerLink="/info/{{ site.id }}">VIEW SUMMARY</a>
+        </div>
+    </div>
+</div>

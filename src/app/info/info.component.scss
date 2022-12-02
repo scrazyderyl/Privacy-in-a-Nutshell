@@ -1,0 +1,230 @@
+a {
+    font-weight: bold;
+    color: black;
+    text-decoration-color: gray;
+}
+
+.page {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    height: 600px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    width: 160px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 30px;
+    border-right: 3px solid;
+    border-image: linear-gradient(to bottom, rgb(104, 160, 206) 55%, transparent 100%);
+    border-image-slice: 1;
+    position: fixed;
+    display: inline-block;
+
+    .section-link {
+        font-size: 20px;
+        margin-bottom: 24px;
+        width: fit-content;
+    }
+
+    .section-link:hover {
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
+
+.main-content {
+    margin-left: 280px;
+    margin-top: 40px;
+    padding-bottom: 40px;
+    width: 600px;
+
+    .title-area {
+        padding-top: 24px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+        padding-right: 30px;
+        border-bottom: 2px solid gray;
+        background-color: gainsboro;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+
+        .updated {
+            margin-top: 2px;
+            font-size: 16px;
+        }
+    }
+
+    .content-area {
+        padding-top: 4px;
+        padding-bottom: 40px;
+        padding-left: 40px;
+        padding-right: 40px;
+        background-color: whitesmoke;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+
+        .section {
+            .section-header {
+                font-size: 22px;
+                margin-bottom: 12px;
+                font-weight: bold;
+            }
+
+            .subsection {                
+                margin-top: 16px;
+
+                .section-subheader {
+                    font-size: 18px;
+                    font-style: italic;
+                }
+            }
+        
+            .search {
+                height: fit-content;
+                margin-left: 14px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                padding-left: 6px;
+                padding-right: 6px;
+                background-color: whitesmoke;
+                border: 1px solid dimgray;
+                border-radius: 4px;
+            }
+        
+            .search:hover {
+                cursor: pointer;
+                background-color: gainsboro;
+            }
+        
+            .text {
+                margin-top: 12px;
+                margin-left: 20px;
+                font-size: 18px;
+            }
+        
+            .data_collected {
+                display: block;
+                border: 2px solid dimgray;
+                border-radius: 4px;
+        
+                .category {
+                    display: block;
+                    
+                    .category-button {
+                        padding-top: 14px;
+                        padding-bottom: 14px;
+                        padding-left: 20px;
+                        padding-right: 20px;
+                        border-radius: 2px;
+                        background-color: rgb(236, 248, 255);
+                        display: flex;
+                        align-items: center;
+        
+                        .category-name {
+                            font-size: 20px;
+                        }
+                
+                        .category-tooltip-trigger {
+                            margin-left: 14px;
+                            background: gainsboro;
+                            font-size: 16px;
+                            font-weight: bold;
+                            border-radius: 12px;
+                            line-height: 22px;
+                            width: 22px;
+                            height: 22px;
+                            text-align: center;
+                            box-shadow: 0px 0px 11px darkgray inset;
+                            cursor: help;
+                            user-select: none;
+                        }
+                    }
+            
+                    .category-button:hover {
+                        background-color: rgb(217, 235, 242);
+                        cursor: pointer;
+                    }
+            
+                    .category-region {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        padding-left: 20px;
+                        padding-right: 20px;
+                        background-color: white;
+        
+                        .datapoint {
+                            display: inline-block;
+                            margin-right: 16px;
+                            margin-bottom: 10px;
+                            padding-top: 4px;
+                            padding-bottom: 4px;
+                            padding-left: 6px;
+                            padding-right: 6px;
+                            background-color: white;
+                            border: 1px solid gray;
+                            border-radius: 4px;
+                            width: fit-content;
+                        }
+                    }
+                }
+        
+                .category:not(:first-child) {
+                    border-top: 2px solid dimgray;
+                }
+            }
+        
+            .disclaimer {
+                margin-top: 4px;
+                margin-left: 6px;
+                font-size: 14px;
+                color: dimgray;
+            }
+        }
+
+        .section:not(:empty) {
+            padding-top: 24px;
+        }
+    }
+
+}
+
+.infobox {
+    height: fit-content;
+    border: 2px solid grey;
+    border-radius: 6px;
+    background-color: whitesmoke;
+    padding-top: 35px;
+    padding-bottom: 40px;
+    padding-left: 28px;
+    padding-right: 28px;
+    width: 220px;
+    margin-top: 150px;
+    margin-left: 40px;
+
+    .heading {
+        font-size: 18px;
+    }
+
+    .heading:not(:first-child) {
+        margin-top: 20px;
+    }
+
+    .info {
+        margin-left: 8px;
+        margin-top: 8px;
+        display: block;
+    }
+
+    .not-breached {
+        color: green;
+    }
+
+    .breached {
+        color: salmon;
+        font-weight: bold;
+    }
+}

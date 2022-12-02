@@ -1,0 +1,117 @@
+a {
+    text-decoration: none;
+}
+
+.page {
+    padding: 40px;
+    width: fit-content;
+    margin-left: 80px;
+}
+
+.title {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.controls {
+    margin-bottom: 36px;
+}
+
+.controls select:not(:last-child), .controls input:not(:last-child) {
+    margin-right: 20px;
+}
+
+select, input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border-width: 2px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 350px);
+    gap: 30px;
+
+    .card {
+        border: 2px solid dimgray;
+        width: 346px;
+        border-radius: 12px;
+        display: block;
+        height: fit-content;
+    }
+    
+    .header {
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-top: 14px;
+        padding-bottom: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: gainsboro;
+        border-bottom: 2px solid dimgray;
+
+        .logo {
+            margin-right: 20px;
+            width: 64px;
+            height: 64px;
+        }
+        
+        .descriptor {
+            margin-top: 6px;
+        }
+        
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .sector {
+            font-size: 18px;
+            color: #404040;
+            font-style: italic;
+        }
+        
+        .shield {
+            display: block;
+            margin-left: 2px;
+            margin-top: 14px;
+            height: 20px;
+        }
+    }
+    
+    .categories {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-left: 18px;
+        padding-right: 18px;
+        
+        .category {
+            margin-left: 6px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+    }
+    
+    .view {
+        display: block;
+        border-top: 2px solid dimgray;
+        background-color: whitesmoke;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left: 14px;
+        padding-right: 14px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        color: orangered;
+    }
+    
+    .view:hover {
+        cursor: pointer;
+        background-color: gainsboro;
+        transition: 0.4s;
+    }
+}
