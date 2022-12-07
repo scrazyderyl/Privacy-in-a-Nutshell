@@ -7,7 +7,8 @@
     "links": [
         {"description": "Website", "url": "https://www.google.com/"},
         {"description": "Account Preferences", "url": "https://myaccount.google.com/"},
-        {"description": "Privacy Checkup", "url": "https://myaccount.google.com/privacycheckup"}
+        {"description": "Privacy Checkup", "url": "https://myaccount.google.com/privacycheckup"},
+        {"description": "Delete Account", "url": "https://myaccount.google.com/deleteaccount"}
     ],
     "documents": [
         {"description": "Privacy Policy", "url": "https://policies.google.com/privacy"},

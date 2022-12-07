@@ -38,11 +38,19 @@ select {
     padding-left: 60px;
     padding-right: 60px;
     width: 800px;
-}
+    
+    p:not(.page-title) {
+        font-size: 20px;
+        margin-top: 20px;
+    }
 
-.text-page p:not(.page-title) {
-    font-size: 20px;
-    margin-top: 20px;
+    a {
+        text-decoration-line: none;
+    }
+
+    a:hover {
+        text-decoration-line: underline;
+    }
 }
 
 .page-title {

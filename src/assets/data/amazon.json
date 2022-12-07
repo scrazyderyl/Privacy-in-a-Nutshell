@@ -5,7 +5,11 @@
         {"description": "2018 Name and Email Leak", "url": "https://www.theguardian.com/technology/2018/nov/21/amazon-hit-with-major-data-breach-days-before-black-friday"}
     ],
     "links": [
-        {"description": "Website", "url": "https://amazon.com"}
+        {"description": "Website", "url": "https://amazon.com"},
+        {"description": "Delete Account", "url": "https://www.amazon.com/privacy/data-deletion"}
+    ],
+    "contacts": [
+        {"description": "Data Requests", "type": "email", "content": "us-datarequest@amazon.com"}
     ],
     "documents": [
         {"description": "Privacy Policy", "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=468496"},

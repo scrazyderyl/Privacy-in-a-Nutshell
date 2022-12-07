@@ -66,16 +66,20 @@
         </div>
     </div>
     <div class="infobox">
-        <p class="heading">Breach status: 
-            <span *ngIf="!data.breaches" class="not-breached">No breaches</span>
+        <p class="heading">Status: 
+            <span *ngIf="!data.breaches" class="not-breached">Not breached</span>
             <span *ngIf="data.breaches" class="breached">Breached</span>
         </p>
         <a *ngFor="let link of data.breaches" class="info" href="{{ link.url }}">{{ link.description }}</a>
         <p class="heading">Links</p>
         <a class="info" *ngFor="let link of data.links" href="{{ link.url }}">{{ link.description }}</a>
         <p class="heading" *ngIf="data.contacts">Contacts</p>
-        <p class="contact info" *ngFor="let contact of data.contacts">{{ contact.description }} — {{ contact.content }}</p>
-        <p class="heading" *ngIf="data.documents">Privacy Information</p>
+        <p class="contact info" *ngFor="let contact of data.contacts"><i>{{ contact.description }}</i> — 
+            <a *ngIf="contact.type == 'email'" href="mailto:{{contact.content}}">{{ contact.content }}</a>
+            <a *ngIf="contact.type == 'phone'" href="tel:{{contact.content}}">{{ contact.content }}</a>
+            <span *ngIf="contact.type == 'other'">{{ contact.content }}</span>
+        </p>
+        <p class="heading" *ngIf="data.documents">Privacy Info</p>
         <a class="info" *ngFor="let link of data.documents" href="{{ link.url }}">{{ link.description }}</a>
     </div>
 </div>

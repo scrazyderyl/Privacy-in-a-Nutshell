@@ -30,6 +30,7 @@ interface Link {
 
 interface Contact {
   description: string
+  type: string
   content: string
 }
 
