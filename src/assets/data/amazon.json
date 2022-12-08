@@ -1,6 +1,7 @@
 {
+    "id": "amazon",
     "name": "Amazon",
-    "updated": "2022-11-30",
+    "updated": "2022-12-7",
     "breaches": [
         {"description": "2018 Name and Email Leak", "url": "https://www.theguardian.com/technology/2018/nov/21/amazon-hit-with-major-data-breach-days-before-black-friday"}
     ],
@@ -17,6 +18,11 @@
         {"description": "Cookies", "url": "https://www.amazon.com/gp/help/customer/display.html/?nodeId=201890250"},
         {"description": "Children's Privacy Disclosure", "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=202185560"},
         {"description": "EU-US and Swiss-US Privacy Shield", "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=202135380"}
+    ],
+    "overview": "Amazon operates an online shopping site, music and video streaming platform, and cloud services as core parts of their business. Amazon collects a sizeable amount of consumer data, including from other sites through its advertising platform.",
+    "issues": [
+        {"content": "Amazon has faced criticism over its storage of voice recordings collected from Alexa smart home products. This storage often occurs without the knowledge of the device's owner since it is turned on by default", "source": "Washington Post", "url": "https://www.washingtonpost.com/technology/2019/05/06/alexa-has-been-eavesdropping-you-this-whole-time/"},
+        {"content": "Other significant privacy issues discovered with Amazon Alexa relate to installable third-party 'skills' that aren't well-regulated. These problems range from missing and inaccurate privacy policies to the ability to modify back-end code after approval of the skill", "source": "NCSU", "url": "https://news.ncsu.edu/2021/03/alexa-skill-vulnerabilities/"}
     ],
     "data_collected": [
         {"category": "Biographical", "datapoints": ["Address", "Age", "Drivers License Number", "Email Address", "Name", "Personal Description", "Phone Number", "Social Security Number"]},

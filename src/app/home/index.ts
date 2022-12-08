@@ -7,11 +7,11 @@ export interface SiteListing {
   alias?: string
 }
 
-export const sectors: string[] = ["Any Sector", "Social", "Shopping", "Entertainment", "Food", "Financial", "Technology", "Lifestyle"];
+export const sectors: string[] = ["Any Sector", "Social", "Shopping", "Entertainment", "Food", "Financial", "Technology", "Productivity", "Lifestyle"];
 
 export const sites: SiteListing[] = [
-  {id: "google", name: "Google", sector: "Technology", tosdr_id: "217", categories: ["Biographical", "Behavioral", "Consumer", "Financial", "Biometric"]},
   {id: "amazon", name: "Amazon", sector: "Shopping", tosdr_id: "190", categories: ["Biographical", "Behavioral", "Consumer", "Financial", "Biometric"]},
+  {id: "google", name: "Google", sector: "Technology", tosdr_id: "217", categories: ["Biographical", "Behavioral", "Consumer", "Financial", "Biometric"]},
   {id: "instagram", name: "Instagram", sector: "Social", tosdr_id: "219"},
   {id: "apple", name: "Apple", sector: "Technology", tosdr_id: "158"},
   {id: "microsoft", name: "Microsoft", sector: "Technology", tosdr_id: "244"},

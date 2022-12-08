@@ -1,6 +1,8 @@
 <div class="page" *ngIf="data | async as data">
     <div class="sidebar">
-        <p class="section-link" (click)="scrollTo(data_collected)">Data Collected</p>
+        <p *ngIf="data.overview" class="section-link" (click)="scrollTo(overview)">Overview</p>
+        <p *ngIf="data.issues" class="section-link" (click)="scrollTo(issues)">Privacy Issues</p>
+        <p *ngIf="data.data_collected" class="section-link" (click)="scrollTo(data_collected)">Data Collected</p>
         <p *ngIf="data.usage" class="section-link" (click)="scrollTo(usage)">Usage</p>
         <p *ngIf="data.third_party" class="section-link" (click)="scrollTo(third_party)">Third-Party</p>
         <p *ngIf="data.rights" class="section-link" (click)="scrollTo(rights)">Rights</p>
@@ -9,29 +11,48 @@
     </div>
     <div class="main-content">
         <div class="title-area">
-            <p class="page-title">{{ data.name }}</p>
-            <p class="updated">Last updated {{ data.updated | date}}</p>
+            <div class="horizontal-flex">
+                <div>
+                    <p class="page-title">{{ data.name }}</p>
+                    <p class="updated">Last updated {{ data.updated | date:"LLLL d, Y"}}</p>
+                </div>
+                <img class="logo" height="48" src="../../assets/logos/{{ data.id }}.png">
+            </div>
         </div>
         <div class="content-area">
-            <div #data_collected class="section">
-                <div class="horizontal-flex">
-                    <p class="section-header">Data Collected</p>
-                    <p class="search" (click)="openDialog()">Search</p>
+            <div #overview class="section">
+                <div *ngIf="data.overview">
+                    <p class="section-header">Overview</p>
+                    <p class="text">{{ data.overview }}</p>
                 </div>
-                <cdk-accordion class="data_collected" multi="true">
-                    <cdk-accordion-item *ngFor="let category of data.data_collected" #accordionItem="cdkAccordionItem" class="category">
-                        <div class="category-button" (click)="accordionItem.toggle()">
-                            <p class="category-name">{{ category.category }}</p>
-                            <div class="example-container" cdkScrollable>
-                                <p class="category-tooltip-trigger" matTooltip="{{category_tooltips.get(category.category) ? category_tooltips.get(category.category) : ''}}" matTooltipPosition="right" matTooltipShowDelay="500" matTooltipHideDelay="200">?</p>
+            </div>
+            <div #issues class="section">
+                <div *ngIf="data.issues">
+                    <p class="section-header">Privacy Issues</p>
+                    <p *ngFor="let value of data.issues" class="text">{{ value.content }} <span *ngIf="value.source">(<a href="{{ value.url }}">{{ value.source }}</a>)</span>.</p>
+                </div>
+            </div>
+            <div #data_collected class="section">
+                <div *ngIf="data.data_collected">
+                    <div class="horizontal-flex">
+                        <p class="section-header">Data Collected</p>
+                        <p class="search" (click)="openDialog()">Search</p>
+                    </div>
+                    <cdk-accordion class="data_collected" multi="true">
+                        <cdk-accordion-item *ngFor="let category of data.data_collected" #accordionItem="cdkAccordionItem" class="category">
+                            <div class="category-button" (click)="accordionItem.toggle()">
+                                <p class="category-name">{{ category.category }}</p>
+                                <div class="example-container" cdkScrollable>
+                                    <p class="category-tooltip-trigger" matTooltip="{{category_tooltips.get(category.category) ? category_tooltips.get(category.category) : ''}}" matTooltipPosition="right" matTooltipShowDelay="500" matTooltipHideDelay="200">?</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="category-region" [style.display]="accordionItem.expanded ? '' : 'none'">
-                            <p *ngFor="let datapoint of category.datapoints" class="datapoint" matTooltip="{{data_tooltips.get(datapoint) ? data_tooltips.get(datapoint) : ''}}" matTooltipPosition="below" matTooltipShowDelay="500" matTooltipHideDelay="120000">{{ datapoint }}</p>
-                        </div>
-                    </cdk-accordion-item>
-                </cdk-accordion>
-                <p class="disclaimer">* based on data points in privacy policy that may potentially be collected.</p>
+                            <div class="category-region" [style.display]="accordionItem.expanded ? '' : 'none'">
+                                <p *ngFor="let datapoint of category.datapoints" class="datapoint" matTooltip="{{data_tooltips.get(datapoint) ? data_tooltips.get(datapoint) : ''}}" matTooltipPosition="below" matTooltipShowDelay="500" matTooltipHideDelay="120000">{{ datapoint }}</p>
+                            </div>
+                        </cdk-accordion-item>
+                    </cdk-accordion>
+                    <p class="disclaimer">* based on data points in privacy policy that may potentially be collected.</p>
+                </div>
             </div>
             <div #usage class="section">
                 <div *ngIf="data.usage">
