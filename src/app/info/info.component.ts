@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -58,7 +58,7 @@ interface Third_Party {
   templateUrl: './info.component.html',
   styleUrls: ['./info.component.scss'],
 })
-export class InfoComponent implements OnInit {
+export class InfoComponent {
   category_tooltips: Map<string, string> = category_tooltips;
   data_tooltips: Map<string, string> = data_tooltips;
   data: Observable<SiteDetails> | undefined;
@@ -66,9 +66,6 @@ export class InfoComponent implements OnInit {
   fragment: string | null = null;
 
   constructor(private activatedRoute: ActivatedRoute, private httpClient: HttpClient, private title: Title, private matDialog: MatDialog) {
-  }
-
-  ngOnInit(): void {
     var id = this.activatedRoute.snapshot.paramMap.get("id");
     this.data = this.httpClient.get<SiteDetails>(`../assets/data/${id}.json`);
 
@@ -82,7 +79,7 @@ export class InfoComponent implements OnInit {
           }
         };
   
-        this.datapoints.sort()
+        this.datapoints.sort();
       }
     }});
   }

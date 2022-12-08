@@ -1,8 +1,8 @@
 <div class="page" *ngIf="data | async as data">
     <div class="sidebar">
         <p *ngIf="data.overview" class="section-link" (click)="scrollTo(overview)">Overview</p>
-        <p *ngIf="data.issues" class="section-link" (click)="scrollTo(issues)">Privacy Issues</p>
         <p *ngIf="data.data_collected" class="section-link" (click)="scrollTo(data_collected)">Data Collected</p>
+        <p *ngIf="data.issues" class="section-link" (click)="scrollTo(issues)">Privacy Issues</p>
         <p *ngIf="data.usage" class="section-link" (click)="scrollTo(usage)">Usage</p>
         <p *ngIf="data.third_party" class="section-link" (click)="scrollTo(third_party)">Third-Party</p>
         <p *ngIf="data.rights" class="section-link" (click)="scrollTo(rights)">Rights</p>
@@ -26,12 +26,6 @@
                     <p class="text">{{ data.overview }}</p>
                 </div>
             </div>
-            <div #issues class="section">
-                <div *ngIf="data.issues">
-                    <p class="section-header">Privacy Issues</p>
-                    <p *ngFor="let value of data.issues" class="text">{{ value.content }} <span *ngIf="value.source">(<a href="{{ value.url }}">{{ value.source }}</a>)</span>.</p>
-                </div>
-            </div>
             <div #data_collected class="section">
                 <div *ngIf="data.data_collected">
                     <div class="horizontal-flex">
@@ -52,6 +46,12 @@
                         </cdk-accordion-item>
                     </cdk-accordion>
                     <p class="disclaimer">* based on data points in privacy policy that may potentially be collected.</p>
+                </div>
+            </div>
+            <div #issues class="section">
+                <div *ngIf="data.issues">
+                    <p class="section-header">Privacy Issues</p>
+                    <p *ngFor="let value of data.issues" class="text">{{ value.content }} <span *ngIf="value.source">(<a href="{{ value.url }}">{{ value.source }}</a>)</span>.</p>
                 </div>
             </div>
             <div #usage class="section">
