@@ -1,91 +1,77 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-
-import { category_tooltips, data_tooltips } from './tooltips';
+import { SiteDetails } from '../viewer/viewer.component';
 import { SearchDialogComponent } from '../search-dialog/search-dialog.component';
 
-interface SiteDetails {
-  id: string
-  name: string
-  updated?: string
-  breaches?: Link[]
-  links?: Link[]
-  contacts?: Contact[]
-  documents?: Link[]
-  overview?: string
-  issues?: Issue[]
-  data_collected?: Category[]
-  usage?: string[]
-  third_party?: Third_Party
-  protections?: string[]
-  rights?: string[]
-  laws?: string[]
-}
+const category_tooltips: Map<string, string> = new Map<string, string>([
+  ["Biographical", "Attributes that can be used to identify a person and information about their experiences"],
+  ["Behavioral", "Lifestyle and user interaction patterns"],
+  ["Consumer", "Preferences related to services and products"],
+  ["Financial", "Payment details and information about finances and taxes"],
+  ["Health", "Medical condition and history"],
+  ["Biometric", "Physical features"],
+  ["Device", "Details and identifiers for the device that is accessing a service"]
+]);
 
-interface Link {
-  description: string
-  url: string
-}
-
-interface Contact {
-  description: string
-  type: string
-  content: string
-}
-
-interface Issue {
-  content: string
-  source: string
-  url: string
-}
-
-interface Category {
-  category: string
-  datapoints: string[]
-}
-
-interface Third_Party {
-  parties: string[],
-  other_sources: string[],
-}
+const data_tooltips: Map<string, string> = new Map<string, string>([
+  ["IP Address", "A unique identifier for an internet connection"]
+]);
 
 @Component({
   selector: 'info',
   templateUrl: './info.component.html',
-  styleUrls: ['./info.component.scss'],
+  styleUrls: ['./info.component.scss']
 })
-export class InfoComponent {
+export class InfoComponent implements OnInit, AfterViewInit {
   category_tooltips: Map<string, string> = category_tooltips;
   data_tooltips: Map<string, string> = data_tooltips;
-  data: Observable<SiteDetails> | undefined;
+  @Input() data!: SiteDetails;
   datapoints: string[] = [];
-  fragment: string | null = null;
 
-  constructor(private activatedRoute: ActivatedRoute, private httpClient: HttpClient, private title: Title, private matDialog: MatDialog) {
-    var id = this.activatedRoute.snapshot.paramMap.get("id");
-    this.data = this.httpClient.get<SiteDetails>(`../assets/data/${id}.json`);
+  constructor(private title: Title, private matDialog: MatDialog, private activatedRoute: ActivatedRoute, private router: Router, private location: Location) {
+  }
 
-    this.data.subscribe({next: data => {
-      this.title.setTitle("Privacy Summary - " + data.name);
+  ngOnInit(): void {      
+    this.title.setTitle("Privacy Summary - " + this.data.name);
 
-      if (data.data_collected) {
-        for (let category of data.data_collected) {
-          for (let datapoint of category.datapoints) {
-            this.datapoints.push(datapoint);
-          }
-        };
-  
-        this.datapoints.sort();
+    if (this.data.data_collected) {
+      for (let category of this.data.data_collected) {
+        for (let datapoint of category.datapoints) {
+          this.datapoints.push(datapoint);
+        }
+      };
+
+      this.datapoints.sort();
+    }
+  }
+
+  ngAfterViewInit(): void {
+    this.activatedRoute.fragment.subscribe({next: fragment => {
+      if (fragment) {
+        this.jumpTo(fragment);
       }
     }});
   }
 
-  scrollTo(element: HTMLElement): void {
-    element.scrollIntoView({behavior: "smooth"});
+  jumpTo(id: string) {
+    var element: HTMLElement | null = document.getElementById(id);
+
+    if (element) {
+      element.scrollIntoView();
+    }
+  }
+
+  scrollTo(id: string) {
+    var url = this.router.createUrlTree([], {relativeTo: this.activatedRoute, fragment: id}).toString();
+    this.location.go(url);
+    var element: HTMLElement | null = document.getElementById(id);
+
+    if (element) {
+      element.scrollIntoView({behavior: "smooth"});
+    }
   }
 
   openDialog(): void {

@@ -24,7 +24,7 @@
                 <p *ngIf="!site.categories" class="category">Summary not available</p>
                 <p class="category" *ngFor="let category of site.categories">{{ category }}</p>
             </div>
-            <a *ngIf="site.categories" class="view" routerLink="/info/{{ site.id }}">VIEW SUMMARY</a>
+            <a *ngIf="site.categories" class="view" routerLink="/viewer/{{ site.id }}">VIEW SUMMARY</a>
         </div>
     </div>
 </div>

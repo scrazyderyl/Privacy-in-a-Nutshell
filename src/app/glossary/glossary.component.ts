@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-glossary',
+  selector: 'glossary',
   templateUrl: './glossary.component.html',
   styleUrls: ['./glossary.component.scss']
 })

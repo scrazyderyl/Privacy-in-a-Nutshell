@@ -1,106 +1,94 @@
-<div class="page" *ngIf="data | async as data">
-    <div class="sidebar">
-        <p *ngIf="data.overview" class="section-link" (click)="scrollTo(overview)">Overview</p>
-        <p *ngIf="data.data_collected" class="section-link" (click)="scrollTo(data_collected)">Data Collected</p>
-        <p *ngIf="data.issues" class="section-link" (click)="scrollTo(issues)">Privacy Issues</p>
-        <p *ngIf="data.usage" class="section-link" (click)="scrollTo(usage)">Usage</p>
-        <p *ngIf="data.third_party" class="section-link" (click)="scrollTo(third_party)">Third-Party</p>
-        <p *ngIf="data.rights" class="section-link" (click)="scrollTo(rights)">Rights</p>
-        <p *ngIf="data.protections" class="section-link" (click)="scrollTo(protections)">Protections</p>
-        <p *ngIf="data.laws" class="section-link" (click)="scrollTo(laws)">Laws</p>
+<div class="sidebar">
+    <p *ngIf="data.overview" class="section-link" (click)="scrollTo('overview')">Overview</p>
+    <p *ngIf="data.data_collected" class="section-link" (click)="scrollTo('data_collected')">Data Collected</p>
+    <p *ngIf="data.issues" class="section-link" (click)="scrollTo('issues')">Privacy Issues</p>
+    <p *ngIf="data.usage" class="section-link" (click)="scrollTo('usage')">Usage</p>
+    <p *ngIf="data.third_party" class="section-link" (click)="scrollTo('third_party')">Third-Party</p>
+    <p *ngIf="data.rights" class="section-link" (click)="scrollTo('rights')">Rights</p>
+    <p *ngIf="data.protections" class="section-link" (click)="scrollTo('protections')">Protections</p>
+    <p *ngIf="data.laws" class="section-link" (click)="scrollTo('laws')">Laws</p>
+</div>
+<div class="main-content">
+    <div class="title-area">
+        <div class="horizontal-flex">
+            <div>
+                <p class="page-title">{{ data.name }}</p>
+                <p class="updated">Last updated {{ data.updated | date:"LLLL d, Y"}}</p>
+            </div>
+            <img class="logo" height="48" src="../../assets/logos/{{ data.id }}.png">
+        </div>
     </div>
-    <div class="main-content">
-        <div class="title-area">
+    <div class="content-area">
+        <div *ngIf="data.overview" id="overview" class="section">
+            <p class="section-header">Overview</p>
+            <p class="text">{{ data.overview }}</p>
+        </div>
+        <div *ngIf="data.data_collected" id="data_collected" class="section">
             <div class="horizontal-flex">
-                <div>
-                    <p class="page-title">{{ data.name }}</p>
-                    <p class="updated">Last updated {{ data.updated | date:"LLLL d, Y"}}</p>
-                </div>
-                <img class="logo" height="48" src="../../assets/logos/{{ data.id }}.png">
+                <p class="section-header">Data Collected</p>
+                <p class="search" (click)="openDialog()">Search</p>
+            </div>
+            <cdk-accordion class="data_collected" multi="true">
+                <cdk-accordion-item *ngFor="let category of data.data_collected" #accordionItem="cdkAccordionItem" class="category">
+                    <div class="category-button" (click)="accordionItem.toggle()">
+                        <p class="category-name">{{ category.category }}</p>
+                        <div class="example-container" cdkScrollable>
+                            <p class="category-tooltip-trigger" matTooltip="{{category_tooltips.get(category.category) ? category_tooltips.get(category.category) : ''}}" matTooltipPosition="right" matTooltipShowDelay="500" matTooltipHideDelay="200">?</p>
+                        </div>
+                    </div>
+                    <div class="category-region" [style.display]="accordionItem.expanded ? '' : 'none'">
+                        <p *ngFor="let datapoint of category.datapoints" class="datapoint" matTooltip="{{data_tooltips.get(datapoint) ? data_tooltips.get(datapoint) : ''}}" matTooltipPosition="below" matTooltipShowDelay="500" matTooltipHideDelay="120000">{{ datapoint }}</p>
+                    </div>
+                </cdk-accordion-item>
+            </cdk-accordion>
+            <p class="disclaimer">* based on data points in privacy policy that may potentially be collected.</p>
+        </div>
+        <div *ngIf="data.issues" id="issues" class="section">
+            <p class="section-header">Privacy Issues</p>
+            <p *ngFor="let value of data.issues" class="text">{{ value.content }} <span *ngIf="value.source">(<a href="{{ value.url }}">{{ value.source }}</a>)</span>.</p>
+        </div>
+        <div *ngIf="data.usage" id="usage" class="section">
+            <p class="section-header">Usage</p>
+            <p class="text" *ngFor="let value of data.usage">{{ value }}</p>
+        </div>
+        <div *ngIf="data.third_party" id="third_party" class="section">
+            <p class="section-header">Third-Party</p>
+            <div *ngIf="data.third_party.parties" class="subsection">
+                <p class="text" *ngFor="let value of data.third_party.parties">{{ value }}</p>
+            </div>
+            <div *ngIf="data.third_party.other_sources" class="subsection">
+                <p class="section-subheader">Other sources</p>
+                <p class="text" *ngFor="let value of data.third_party.other_sources">{{ value }}</p>
             </div>
         </div>
-        <div class="content-area">
-            <div #overview class="section">
-                <div *ngIf="data.overview">
-                    <p class="section-header">Overview</p>
-                    <p class="text">{{ data.overview }}</p>
-                </div>
-            </div>
-            <div #data_collected class="section">
-                <div *ngIf="data.data_collected">
-                    <div class="horizontal-flex">
-                        <p class="section-header">Data Collected</p>
-                        <p class="search" (click)="openDialog()">Search</p>
-                    </div>
-                    <cdk-accordion class="data_collected" multi="true">
-                        <cdk-accordion-item *ngFor="let category of data.data_collected" #accordionItem="cdkAccordionItem" class="category">
-                            <div class="category-button" (click)="accordionItem.toggle()">
-                                <p class="category-name">{{ category.category }}</p>
-                                <div class="example-container" cdkScrollable>
-                                    <p class="category-tooltip-trigger" matTooltip="{{category_tooltips.get(category.category) ? category_tooltips.get(category.category) : ''}}" matTooltipPosition="right" matTooltipShowDelay="500" matTooltipHideDelay="200">?</p>
-                                </div>
-                            </div>
-                            <div class="category-region" [style.display]="accordionItem.expanded ? '' : 'none'">
-                                <p *ngFor="let datapoint of category.datapoints" class="datapoint" matTooltip="{{data_tooltips.get(datapoint) ? data_tooltips.get(datapoint) : ''}}" matTooltipPosition="below" matTooltipShowDelay="500" matTooltipHideDelay="120000">{{ datapoint }}</p>
-                            </div>
-                        </cdk-accordion-item>
-                    </cdk-accordion>
-                    <p class="disclaimer">* based on data points in privacy policy that may potentially be collected.</p>
-                </div>
-            </div>
-            <div #issues class="section">
-                <div *ngIf="data.issues">
-                    <p class="section-header">Privacy Issues</p>
-                    <p *ngFor="let value of data.issues" class="text">{{ value.content }} <span *ngIf="value.source">(<a href="{{ value.url }}">{{ value.source }}</a>)</span>.</p>
-                </div>
-            </div>
-            <div #usage class="section">
-                <div *ngIf="data.usage">
-                    <p class="section-header">Usage</p>
-                    <p class="text" *ngFor="let value of data.usage">{{ value }}</p>
-                </div>
-            </div>
-            <div #third_party class="section">
-                <div *ngIf="data.third_party">
-                    <p class="section-header">Third-Party</p>
-                    <div *ngIf="data.third_party.parties" class="subsection">
-                        <p class="text" *ngFor="let value of data.third_party.parties">{{ value }}</p>
-                    </div>
-                    <div *ngIf="data.third_party.other_sources" class="subsection">
-                        <p class="section-subheader">Other sources</p>
-                        <p class="text" *ngFor="let value of data.third_party.other_sources">{{ value }}</p>
-                    </div>
-                </div>
-            </div>
-            <div #protections class="section">
-                <p *ngIf="data.protections" class="section-header">Protections</p>
-                <p class="text" *ngFor="let value of data.protections">{{ value }}</p>
-            </div>
-            <div #rights class="section">
-                <p *ngIf="data.rights" class="section-header">Rights</p>
-                <p class="text" *ngFor="let value of data.rights">{{ value }}</p>
-            </div>
-            <div #laws class="section">
-                <p *ngIf="data.laws" class="section-header">Laws and Frameworks</p>
-                <p class="text" *ngFor="let value of data.laws">{{ value }}</p>
-            </div>
+        <div *ngIf="data.protections" id="protections" class="section">
+            <p class="section-header">Protections</p>
+            <p class="text" *ngFor="let value of data.protections">{{ value }}</p>
+        </div>
+        <div *ngIf="data.rights" id="rights" class="section">
+            <p class="section-header">Rights</p>
+            <p class="text" *ngFor="let value of data.rights">{{ value }}</p>
+        </div>
+        <div *ngIf="data.laws" id="laws" class="section">
+            <p class="section-header">Laws and Frameworks</p>
+            <p class="text" *ngFor="let value of data.laws">{{ value }}</p>
         </div>
     </div>
-    <div class="infobox">
-        <p class="heading">Status: 
-            <span *ngIf="!data.breaches" class="not-breached">Not breached</span>
-            <span *ngIf="data.breaches" class="breached">Breached</span>
-        </p>
-        <a *ngFor="let link of data.breaches" class="info" href="{{ link.url }}">{{ link.description }}</a>
-        <p class="heading">Links</p>
-        <a class="info" *ngFor="let link of data.links" href="{{ link.url }}">{{ link.description }}</a>
-        <p class="heading" *ngIf="data.contacts">Contacts</p>
-        <p class="contact info" *ngFor="let contact of data.contacts"><i>{{ contact.description }}</i> — 
-            <a *ngIf="contact.type == 'email'" href="mailto:{{contact.content}}">{{ contact.content }}</a>
-            <a *ngIf="contact.type == 'phone'" href="tel:{{contact.content}}">{{ contact.content }}</a>
-            <span *ngIf="contact.type == 'other'">{{ contact.content }}</span>
-        </p>
-        <p class="heading" *ngIf="data.documents">Privacy Info</p>
-        <a class="info" *ngFor="let link of data.documents" href="{{ link.url }}">{{ link.description }}</a>
-    </div>
+</div>
+<div class="infobox">
+    <p class="heading">Status: 
+        <span *ngIf="!data.breaches" class="not-breached">Not breached</span>
+        <span *ngIf="data.breaches" class="breached">Breached</span>
+    </p>
+    <a *ngFor="let link of data.breaches" class="info" href="{{ link.url }}">{{ link.description }}</a>
+    <p class="heading">Links</p>
+    <a class="info" *ngFor="let link of data.links" href="{{ link.url }}">{{ link.description }}</a>
+    <p class="heading" *ngIf="data.contacts">Contacts</p>
+    <p class="contact info" *ngFor="let contact of data.contacts"><i>{{ contact.description }}</i> — 
+        <a *ngIf="contact.type == 'email'" href="mailto:{{contact.content}}">{{ contact.content }}</a>
+        <a *ngIf="contact.type == 'phone'" href="tel:{{contact.content}}">{{ contact.content }}</a>
+        <span *ngIf="contact.type == 'other'">{{ contact.content }}</span>
+    </p>
+    <p class="heading" *ngIf="data.documents">Privacy Info</p>
+    <a class="info" *ngFor="let link of data.documents" href="{{ link.url }}">{{ link.description }}</a>
 </div>

@@ -19,6 +19,7 @@ import { ResourcesComponent } from './resources/resources.component';
 import { GlossaryComponent } from './glossary/glossary.component';
 import { AboutComponent } from './about/about.component';
 import { SearchDialogComponent } from './search-dialog/search-dialog.component';
+import { ViewerComponent } from './viewer/viewer.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +27,13 @@ import { SearchDialogComponent } from './search-dialog/search-dialog.component';
     NavbarComponent,
     HomeComponent,
     NotFoundComponent,
+    ViewerComponent,
     InfoComponent,
     LegalComponent,
     ResourcesComponent,
     GlossaryComponent,
     AboutComponent,
-    SearchDialogComponent,
+    SearchDialogComponent
   ],
   imports: [
     BrowserModule,

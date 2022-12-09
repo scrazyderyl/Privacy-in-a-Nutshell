@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-legal',
+  selector: 'legal',
   templateUrl: './legal.component.html',
   styleUrls: ['./legal.component.scss']
 })
