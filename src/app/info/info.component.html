@@ -76,19 +76,30 @@
     </div>
 </div>
 <div class="infobox">
-    <p class="heading">Status: 
-        <span *ngIf="!data.breaches" class="not-breached">Not breached</span>
-        <span *ngIf="data.breaches" class="breached">Breached</span>
-    </p>
-    <a *ngFor="let link of data.breaches" class="info" href="{{ link.url }}">{{ link.description }}</a>
-    <p class="heading">Links</p>
-    <a class="info" *ngFor="let link of data.links" href="{{ link.url }}">{{ link.description }}</a>
-    <p class="heading" *ngIf="data.contacts">Contacts</p>
-    <p class="contact info" *ngFor="let contact of data.contacts"><i>{{ contact.description }}</i> — 
-        <a *ngIf="contact.type == 'email'" href="mailto:{{contact.content}}">{{ contact.content }}</a>
-        <a *ngIf="contact.type == 'phone'" href="tel:{{contact.content}}">{{ contact.content }}</a>
-        <span *ngIf="contact.type == 'other'">{{ contact.content }}</span>
-    </p>
-    <p class="heading" *ngIf="data.documents">Privacy Info</p>
-    <a class="info" *ngFor="let link of data.documents" href="{{ link.url }}">{{ link.description }}</a>
+    <div class="section">
+        <p class="heading">Status: 
+            <span *ngIf="!data.breaches" class="not-breached">Not breached</span>
+            <span *ngIf="data.breaches" class="breached">Breached</span>
+        </p>
+        <a *ngFor="let link of data.breaches" class="info" href="{{ link.url }}">{{ link.description }}</a>
+    </div>
+    <div *ngIf="data.links" class="divider"></div>
+    <div *ngIf="data.links" class="section">
+        <p class="heading">Links</p>
+        <a *ngFor="let link of data.links" class="info" href="{{ link.url }}">{{ link.description }}</a>
+    </div>
+    <div *ngIf="data.contacts" class="divider"></div>
+    <div *ngIf="data.contacts" class="section">
+        <p class="heading" >Contacts</p>
+        <p *ngFor="let contact of data.contacts" class="contact info"><i>{{ contact.description }}</i> — 
+            <a *ngIf="contact.type == 'email'" href="mailto:{{contact.content}}">{{ contact.content }}</a>
+            <a *ngIf="contact.type == 'phone'" href="tel:{{contact.content}}">{{ contact.content }}</a>
+            <span *ngIf="contact.type == 'other'">{{ contact.content }}</span>
+        </p>
+    </div>
+    <div *ngIf="data.documents" class="divider"></div>
+    <div *ngIf="data.documents" class="section">
+        <p class="heading" >Privacy Info</p>
+        <a *ngFor="let link of data.documents" class="info" href="{{ link.url }}">{{ link.description }}</a>
+    </div>
 </div>
