@@ -17,7 +17,7 @@
         {"description": "Frameworks", "url": "https://policies.google.com/privacy/frameworks"},
         {"description": "Partners", "url": "https://policies.google.com/privacy/google-partners"}
     ],
-    "overview": "Google offers a range of products, including a search engine, email services, video services, productivity tools, and an advertising platform, to list a few. This diversity of services means Google collects a wide variety of information.",
+    "overview": "Google offers a range of web services for consumers, businesses, and enterprise customers, such as a search engine, productivity suite, advertising platform, and cloud computing.",
     "issues": [
         {"content": "In 2018, researchers at Princeton University found that Google continues to track a user's location even if they turn their location history off, in violation of the user's preferences", "source": "AP", "url": "https://apnews.com/article/north-america-science-technology-business-ap-top-news-828aefab64d4411bac257a07c1af0ecb"},
         {"content": "In 2019, Google was fined by the Federal Trade Commission (FTC) for violating COPPA. Google collects data on YouTube users using unique identifiers, and did not exclude children under 13 who did not have parental consent. The FTC found that YouTube profited by serving targetted ads on child-directed channels", "source": "FTC", "url": "https://www.ftc.gov/news-events/news/press-releases/2019/09/google-youtube-will-pay-record-170-million-alleged-violations-childrens-privacy-law"}
